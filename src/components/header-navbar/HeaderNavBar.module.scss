@@ -1,0 +1,41 @@
+
+.navbar {
+  align-items: center;
+  width: 100%;
+
+  .brand {
+    font-size: 1.5rem;
+
+    span {
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+  }
+
+  .menulist {
+    display: flex;
+    list-style: none;
+
+    li {
+      margin-inline: 0;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      a {
+        padding: .4rem 2rem;
+
+        &:hover {
+          background-color: #000;
+          color: #fff;
+        }
+      }
+
+      .active {
+        background-color: #000;
+        color: #fff;
+      }
+    }
+  }
+}

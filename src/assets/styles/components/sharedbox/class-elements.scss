@@ -1,0 +1,48 @@
+/************************* Class Elements **************************/
+.sbx-container {
+  --default-padding-x: $sbx-padding-default-md-x-value;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-right: auto;
+  margin-left: auto;
+  padding-inline: calc(var(--default-padding-x) * .5);
+}
+
+
+
+//
+@media (min-width: $sbx-width-screen-sm) {
+    
+  /************ Compenents *************/
+  .sbx-container {
+    max-width: 540px;
+  }
+}
+
+//
+@media (min-width: $sbx-width-screen-md) {
+    
+  /************ Compenents *************/
+  .sbx-container {
+    max-width: 720px;
+  }
+}
+
+//
+@media (min-width: $sbx-width-screen-lg) {
+    
+  /************ Compenents *************/
+  .sbx-container {
+    max-width: 960px;
+  }
+}
+
+// 
+@media (min-width: $sbx-width-screen-xl) {
+    
+  /************ Compenents *************/
+  .sbx-container {
+    max-width: 1140px;
+  }
+}

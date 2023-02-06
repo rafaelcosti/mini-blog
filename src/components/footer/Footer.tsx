@@ -9,9 +9,11 @@ import styles from './Footer.module.scss';
  */
 const Footer = (prop: IFooter) : ReactElement => {
   return (
-    <div className="sbx-container">
-      <h1>Footer</h1>
-    </div>
+    <footer>
+      <div className={styles.footer}>
+        <h1>Footer</h1>
+      </div>
+    </footer>
   );
 }
 
