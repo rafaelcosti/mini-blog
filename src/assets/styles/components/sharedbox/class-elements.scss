@@ -3,13 +3,27 @@
   --default-padding-x: $sbx-padding-default-md-x-value;
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-right: auto;
   margin-left: auto;
   padding-inline: calc(var(--default-padding-x) * .5);
+
+  .error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: #f5c6cb;
+    padding: 2rem;
+  }
 }
 
-
+.sbx-row {
+  align-items: center;
+  justify-content: space-between;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
 
 //
 @media (min-width: $sbx-width-screen-sm) {
