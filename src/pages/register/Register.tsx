@@ -1,8 +1,10 @@
-import { ReactElement } from 'react';
+import React, { FormEventHandler, ReactElement } from 'react';
 import { useState, useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { useAuthentication } from '../../hook/authentication/useAuthentication';
+import UserRegisteRequest from '../../interfaces/user/UserRegisteRequest';
 import IRegister from './IRegister';
-import styles from './Register.module.scss';
+//import styles from './Register.module.scss';
 
 /**
  * 
@@ -16,7 +18,6 @@ const Register = (prop: IRegister) : ReactElement => {
   const [name, setName] = useState("");
   
   /**
-   * 
    */
   const [eMail, setEMail] = useState("");
   
@@ -36,15 +37,48 @@ const Register = (prop: IRegister) : ReactElement => {
   const [errorMessage, setErrorMessage] = useState("");
 
   /**
+   * Hook auth
+   */    
+  const { createUser, error: authError, loading } = useAuthentication();
+
+  /**
+   * 
+   */
+  useEffect(() => {
+    if (authError) {
+      setErrorMessage(authError);
+    }
+  }, [authError]);
+
+  /**
    * 
    * @param e 
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage("");
 
-    alert(e);
-  }
+    const user: UserRegisteRequest = {
+      name, eMail, password, confirmPassword 
+    };
+
+    if (password.length < 6) {
+      setErrorMessage("A senha deve conter no mínimo 6 caracteres");
+      return;
+    } else {
+      if (confirmPassword !== password){
+        setErrorMessage("A confirmação de senha não confere");
+        return;
+      }
+    }
+
+    const response = await createUser(user);
+
+    setName("");
+    setEMail("");
+    setConfirmPassword("");
+    setPassword("");
+  };
 
   return (
     <div className="sbx-container">
@@ -61,7 +95,7 @@ const Register = (prop: IRegister) : ReactElement => {
                 Nome:
               </label>
               <input type="text" required={true} name="name" placeholder="informe seu nome"
-                     value={name}
+                     value={name} 
                      onChange={(e: React.ChangeEvent<HTMLInputElement> ) => setName(e.target.value)} />
             </div>
             <div className="form-control">
@@ -77,7 +111,7 @@ const Register = (prop: IRegister) : ReactElement => {
                 Senha:
               </label>
               <input type="password" required={true} name="password" placeholder="Informe sua senha"
-                     value={password}
+                     value={password} id="password"
                      onChange={(e: React.ChangeEvent<HTMLInputElement> ) => setPassword(e.target.value)} />
             </div>
             <div className="form-control">
@@ -88,8 +122,23 @@ const Register = (prop: IRegister) : ReactElement => {
                       value={confirmPassword}
                       onChange={(e: React.ChangeEvent<HTMLInputElement> ) => setConfirmPassword(e.target.value)} />
             </div>
+            {
+              errorMessage ?
+                <div className="form-control">
+                  <div className="error">
+                    { errorMessage }
+                  </div>
+                </div>
+              :
+               <></>
+            }
             <div className="form-control">
-              <button className='button'>Cadastrar</button>
+              { loading ? 
+                  <button className='button' disabled>Aguarde...</button>
+                : 
+                  <button className='button'>Cadastrar</button>
+              }
+              
             </div>
           </form>
         </Col>

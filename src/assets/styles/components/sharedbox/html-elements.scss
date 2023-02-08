@@ -122,6 +122,10 @@ input {
   }
 }
 
+main {
+  min-height: 60vh;
+}
+
 textarea {
   box-sizing: border-box;
 }
