@@ -8,6 +8,8 @@ export default interface ISbxRouter {
   description: String;
   path: string;
   element: ReactNode;
-  hidden: boolean;
+  hiddenLogged: boolean;
+  hiddenLogout: boolean;
   internal: boolean;
+  profiles?: Array<number>;
 }

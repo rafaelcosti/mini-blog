@@ -55,9 +55,10 @@ export const useAuthentication = () => {
   };
 
   const logout = () => {
+    debugger;
     checkIfIsCancelled();
-
     signOut(auth);
+    console.log(auth);
   };
 
   const login = async (data: UserRegisteRequest) => {

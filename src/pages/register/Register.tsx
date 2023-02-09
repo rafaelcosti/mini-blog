@@ -1,4 +1,4 @@
-import React, { FormEventHandler, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { useState, useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useAuthentication } from '../../hook/authentication/useAuthentication';
@@ -73,7 +73,6 @@ const Register = (prop: IRegister) : ReactElement => {
     }
 
     const response = await createUser(user);
-
     setName("");
     setEMail("");
     setConfirmPassword("");

@@ -11,7 +11,8 @@ const Footer = (prop: IFooter) : ReactElement => {
   return (
     <footer>
       <div className={styles.footer}>
-        <h1>Footer</h1>
+        <h3>Escreva sobre o que você tem interesse!</h3>
+        <p>Mini Blog &copy; 2023</p>
       </div>
     </footer>
   );

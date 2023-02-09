@@ -45,10 +45,10 @@ a:active {
 }
 
 /************************* inputs Elements *************************/
-button {
+button, .btn {
   background-color: #000;
-  cursor: pointer;
-  color: #fff;
+  cursor: pointer !important;
+  color: #fff !important;
   display: inline-block;
   letter-spacing: 0.15rem;
   margin: 0 auto;
@@ -61,7 +61,7 @@ button {
   transition: all 0.3s;
 
   &:hover {
-    color: #151515;
+    color: #151515 !important;
 
     &::after {
       transform: scale(1, 1);
