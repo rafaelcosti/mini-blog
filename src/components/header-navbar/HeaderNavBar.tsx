@@ -37,13 +37,14 @@ const HeaderNavBar = (prop: IHeaderNavBar) : ReactElement => {
         const us : User = (user as User);
         if (us.logged) {
           setItemsNavbar(prop.items?.filter((item) => { 
-            return !item.hiddenLogged; 
+            return !item.hiddenLogged && !item.description.startsWith("404"); 
           }));
           return ;
         }
       } 
       
-      setItemsNavbar(prop.items.filter((item) => { return !item.hiddenLogout; }));
+      setItemsNavbar(prop.items.filter((item) => { return !item.hiddenLogout 
+        && !item.description.startsWith("404"); }));
     }
   }, [user]);
 

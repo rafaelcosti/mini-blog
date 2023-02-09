@@ -1,4 +1,5 @@
 import ISbxRouter from "../components/sbx-router/ISbxRouter";
+import Route404 from "../pages/404/Route404";
 import About from "../pages/about/About";
 import Contact from "../pages/contact/Contact";
 import Dashboard from "../pages/dashboard/Model";
@@ -16,6 +17,7 @@ export class RouterConst {
    */
   static navigation(apiKey: string) : Array<ISbxRouter> {
     return [
+      { description: "404"      , path: "/*"          , element: <Route404/>  , hiddenLogged: false, hiddenLogout: false , internal: false, ico: null },
       { description: "Home"     , path: ""            , element: <Home/>      , hiddenLogged: false, hiddenLogout: false, internal: false, ico: null },
       { description: "Dashboard", path: "/dashboard"  , element: <Dashboard/> , hiddenLogged: false, hiddenLogout: true , internal: false, ico: null },
       { description: "Cadastrar", path: "/register"   , element: <Register/>  , hiddenLogged: true , hiddenLogout: false, internal: false, ico: null },
